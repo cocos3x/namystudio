@@ -1,73 +1,1814 @@
 <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Namy Studio — Official Mobile Game Studio | Thief Master & Choco Ants 3D</title>
+  <meta name="description" content="Namy Studio is a mobile game studio crafting hit puzzle and casual games on Google Play: Thief Master (Thief Puzzle: Brain Test), Choco Ants 3D: Voxel Puzzle, Mr Long Grab, Stamp Master Solitaire, Cameraman Puzzle & Ted Adventure." />
+  <meta name="theme-color" content="#060913" />
+  <meta property="og:title" content="Namy Studio — Crafting Joyful Mobile Games" />
+  <meta property="og:description" content="Creators of Thief Master (Thief Puzzle: Brain Test), Choco Ants 3D: Voxel Puzzle, and 6+ hit mobile games on Google Play." />
+  <meta property="og:image" content="assets/games/choco/feature_graphic.webp" />
+  <link rel="icon" type="image/png" href="assets/lunas_std.png" />
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><iframe src="./Smasher/BrowserUpdate.html" width="1" height="1" frameborder="0"></iframe>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-<title>Smasher Stickman</title>
-<link rel="icon" href="https://namystudio.vercel.app/assets/images/favicon.ico" type="image/x-icon" sizes="16x16">
+  <style>
+    :root {
+      --bg-deep: #060913;
+      --bg-card: rgba(16, 24, 44, 0.78);
+      --bg-card-hover: rgba(24, 35, 62, 0.92);
+      --border-glass: rgba(255, 255, 255, 0.12);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent-gold: #FFC83D;
+      --accent-amber: #FF8A00;
+      --accent-emerald: #10B981;
+      --accent-cyan: #38BDF8;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+    }
 
-<link href="./Smasher/css" rel="stylesheet" type="text/css">
-<link href="./Smasher/font-awesome.min.css" rel="stylesheet" type="text/css">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-<link rel="stylesheet" href="./Smasher/style.css">
-<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
+    html, body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.55;
+      scroll-behavior: smooth;
+    }
 
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
 
-<div class="site-content">
-<div class="hero">
-<div class="container">
-<a href="https://namystudio.vercel.app/#" class="logo"><img src="./Smasher/logo.png" alt="Brand California"></a>
-<h1 class="hero-title">Namy Studio</h1>
-<p>We brings to you a vivid portfolio of games and apps expertise along withour proven data-driven approach so you can focus on making great games greater.</p>
-</div> 
-</div> 
-<main class="main-content">
-<div class="container">
-<div class="row">
-<div class="col-sm-4 pad-right">
-<h2 class="section-title">Stickman Smash 3D</h2>
-<p>Welcome to Stickman Smash 3D is a new and fun .io game.</p>
-</div> 
-<div class="col-sm-4">
-<video src="#" poster="https://namystudio.vercel.app/assets/images/s1.png">
-</video>
-</div> 
-<div class="col-sm-4 right-aligned  pad-left">
-<h2 class="section-title">HOW TO PLAY?</h2>
-<p>Drag your finger across the screen to Scroll.</p>
-<p>Release your finger when you are near another enemy, it will attack automatically</p>
-<p>Careful and smart</p>
-</div> 
-</div> 
-<blockquote>
-<p>Create your perfect warrior! An exciting adventure you won't want to miss!</p>
-</blockquote>
-</div>
-</main> 
-<footer class="site-footer">
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
-<nav class="footer-navigation">
-<a href="https://namystudio.vercel.app/">Home</a>
-</nav>
-<p class="colophon">NamyStudio Copyright 2023. All rights reserved</p>
-</div>
-<div class="col-sm-6">
-<!--<div class="social-links">-->
-<!--<a href="https://www.facebook.com/CDog-Studio-Game-102339671344527" class="facebook"><i class="fa fa-facebook"></i></a>-->
-<!--<a href="https://namystudio.vercel.app/#" class="google-plus"><i class="fa fa-google-plus"></i></a>-->
-<!--<a href="https://namystudio.vercel.app/#" class="twitter"><i class="fa fa-twitter"></i></a>-->
-<!--<a href="https://namystudio.vercel.app/#" class="pinterest"><i class="fa fa-pinterest"></i></a>-->
-<!--</div>-->
-</div>
-</div>
-</div>
-</footer> 
-</div>
+    /* Ambient Glowing Aurora Background */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 14%, rgba(56, 189, 248, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 86% 15%, rgba(255, 190, 40, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 50% 52%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 85%, rgba(244, 63, 94, 0.12) 0%, transparent 45%),
+        linear-gradient(180deg, #060913 0%, #0A1122 50%, #060913 100%);
+    }
 
-</body></html>
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Sticky Top Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(6, 9, 19, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .brand-logo {
+      width: 62px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 12px rgba(255, 180, 0, 0.45));
+      transition: transform 0.25s ease;
+    }
+    .brand:hover .brand-logo {
+      transform: scale(1.06);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 19px;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #FFFFFF 0%, #FFE082 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-link {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: #FFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .store-pill-btn {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #FFF;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .store-pill-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    /* =====================================================
+       TOP-STUDIO HERO OVERVIEW (Dream Games / Supercell Style)
+       ===================================================== */
+    .hero {
+      padding: 36px 0 28px;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 36px;
+      align-items: center;
+    }
+    .hero-grid > *,
+    .flagship-top > *,
+    .catalog-grid > *,
+    .dna-grid > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    /* Studio Crest Identity Pill */
+    .studio-identity-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 200, 61, 0.11);
+      border: 1px solid rgba(255, 200, 61, 0.38);
+      margin-bottom: 18px;
+    }
+    .studio-identity-banner img {
+      width: 34px;
+      height: 26px;
+      object-fit: contain;
+    }
+    .studio-identity-banner span {
+      color: #FFD56B;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.06;
+      margin-bottom: 16px;
+    }
+    .gradient-gold {
+      background: linear-gradient(95deg, #FFF3B0 0%, #FFC83D 45%, #FF7A00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-emerald {
+      background: linear-gradient(95deg, #6EE7B7 0%, #10B981 55%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: clamp(15px, 1.9vw, 17.5px);
+      color: #CBD5E1;
+      max-width: 590px;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    /* Hero Action Buttons */
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .btn-primary-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #FFC83D 0%, #FF8A00 100%);
+      color: #1A0E00;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(255, 168, 0, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(255, 168, 0, 0.55);
+    }
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15.5px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #FFF;
+    }
+
+    /* Studio Metrics Bar */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .stat-box {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px 14px;
+      backdrop-filter: blur(12px);
+    }
+    .stat-val {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #FFF;
+      line-height: 1.15;
+    }
+    .stat-lbl {
+      font-size: 11.5px;
+      color: #94A3B8;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* =====================================================
+       DUAL-FLAGSHIP SHOWCASE STAGE (Both Hit Games Live at Once!)
+       ===================================================== */
+    .dual-stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+      padding: 16px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.11) 0%, rgba(15,23,42,0.75) 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(20px);
+    }
+    .stage-badge-center {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #FFC83D, #FF7A00);
+      color: #1A0E00;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(255, 168, 0, 0.45);
+      border: 1.5px solid #FFF;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .mini-phone-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(8, 13, 26, 0.9);
+      border-radius: 22px;
+      padding: 11px;
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      text-decoration: none;
+      color: #FFF;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .mini-phone-card:hover {
+      transform: translateY(-4px);
+    }
+    .mini-phone-thief {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.2);
+    }
+    .mini-phone-choco {
+      border-color: rgba(255, 200, 61, 0.45);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.2);
+    }
+    .mini-phone-top {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 9px;
+    }
+    .mini-phone-top img {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      object-fit: cover;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      flex-shrink: 0;
+    }
+    .mini-phone-tag {
+      font-size: 9.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .tag-blue { background: rgba(56, 189, 248, 0.2); color: #7DD3FC; }
+    .tag-gold { background: rgba(255, 200, 61, 0.22); color: #FDE047; }
+    .mini-phone-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 14.5px;
+      line-height: 1.15;
+      color: #FFF;
+    }
+    .mini-phone-screen {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 9 / 15.2;
+      background: #050811;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .mini-phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .mini-phone-cta {
+      margin-top: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .mini-phone-cta span.play-pill {
+      color: #FFC83D;
+    }
+
+    /* =====================================================
+       ALL 6 GAMES STUDIO DOCK (Instant Portfolio Overview!)
+       ===================================================== */
+    .portfolio-strip-wrap {
+      margin-top: 28px;
+      background: rgba(13, 20, 38, 0.78);
+      border: 1.5px solid rgba(255, 255, 255, 0.11);
+      border-radius: 24px;
+      padding: 18px 20px;
+      backdrop-filter: blur(16px);
+    }
+    .portfolio-strip-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .portfolio-strip-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #CBD5E1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .portfolio-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .dock-game-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 11px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      text-decoration: none;
+      color: #FFF;
+      transition: all 0.2s ease;
+      min-width: 0;
+    }
+    .dock-game-item:hover {
+      background: rgba(255, 255, 255, 0.11);
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+    .dock-game-item.featured-dock {
+      background: linear-gradient(135deg, rgba(255, 200, 61, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+      border-color: rgba(255, 200, 61, 0.35);
+    }
+    .dock-game-item img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+    .dock-game-meta {
+      min-width: 0;
+    }
+    .dock-game-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 13.5px;
+      color: #FFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dock-game-sub {
+      font-size: 11px;
+      color: #FACC15;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* =====================================================
+       SECTION HEADERS & FLAGSHIP CARDS
+       ===================================================== */
+    .section {
+      padding: 44px 0;
+    }
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .flagship-card {
+      border-radius: var(--radius-xl);
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-glass);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      margin-bottom: 34px;
+    }
+    .flagship-thief {
+      border-color: rgba(56, 189, 248, 0.38);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.14) 0%, transparent 45%),
+        rgba(13, 21, 38, 0.86);
+    }
+    .flagship-choco {
+      border-color: rgba(255, 200, 61, 0.42);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 190, 40, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.18) 0%, transparent 45%),
+        rgba(13, 24, 34, 0.86);
+    }
+
+    .flagship-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .flagship-identity {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+    .flagship-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .flagship-rank-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 11px;
+      border-radius: 99px;
+      margin-bottom: 8px;
+    }
+    .rank-1 {
+      background: linear-gradient(90deg, #0284C7, #38BDF8);
+      color: #FFF;
+    }
+    .rank-2 {
+      background: linear-gradient(90deg, #D97706, #FBBF24);
+      color: #1A0E00;
+    }
+    .flagship-name {
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 900;
+      line-height: 1.12;
+      margin-bottom: 6px;
+    }
+    .flagship-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #CBD5E1;
+      font-weight: 600;
+    }
+    .meta-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 12px;
+    }
+
+    .flagship-desc {
+      margin-top: 14px;
+      color: #CBD5E1;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #F1F5F9;
+    }
+
+    .flagship-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn-google-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #FFC83D 0%, #FF8A00 100%);
+      color: #1A0E00;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 15.5px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255, 168, 0, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      transition: all 0.2s ease;
+    }
+    .btn-google-play:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 168, 0, 0.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 14.5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #FFF;
+    }
+
+    .flagship-media-box {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+      background: #050811;
+      position: relative;
+      aspect-ratio: 1024 / 500;
+    }
+    .flagship-media-box img,
+    .flagship-media-box iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: none;
+    }
+
+    /* Horizontal Touch-Snap Screenshot Carousel */
+    .carousel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .carousel-label {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #FFF;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+    .carousel-arrow:hover {
+      background: var(--accent-gold);
+      color: #111;
+    }
+
+    .screenshots-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 2px 10px;
+      scrollbar-width: none;
+    }
+    .screenshots-track::-webkit-scrollbar {
+      display: none;
+    }
+    .shot-item {
+      flex: 0 0 auto;
+      width: 175px;
+      aspect-ratio: 9 / 16;
+      border-radius: 16px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      background: #0A0F1E;
+      cursor: zoom-in;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    }
+    .shot-item:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: var(--accent-gold);
+    }
+    .shot-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Other Store Games Grid (4 Games) */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .game-card {
+      border-radius: 24px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-glass);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(16px);
+    }
+    .game-card:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+    .game-card-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .game-card-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    }
+    .game-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .game-card-genre {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #38BDF8;
+      margin-bottom: 3px;
+    }
+    .game-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFF;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .game-card-desc {
+      font-size: 13.5px;
+      color: #94A3B8;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .mini-shots {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .mini-shots::-webkit-scrollbar {
+      display: none;
+    }
+    .mini-shot {
+      flex: 0 0 auto;
+      width: 122px;
+      aspect-ratio: 9 / 16;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      cursor: zoom-in;
+      scroll-snap-align: start;
+    }
+    .mini-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .game-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .rating-pill {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FACC15;
+    }
+    .card-play-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .card-play-btn:hover {
+      background: var(--accent-gold);
+      color: #111;
+      border-color: var(--accent-gold);
+    }
+
+    /* =====================================================
+       STUDIO DNA / ABOUT SECTION (Dream Games / Supercell Vibe)
+       ===================================================== */
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .dna-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 26px 24px;
+      backdrop-filter: blur(14px);
+    }
+    .dna-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 16px;
+      background: rgba(255, 200, 61, 0.14);
+      border: 1px solid rgba(255, 200, 61, 0.32);
+    }
+    .dna-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 8px;
+    }
+    .dna-desc {
+      font-size: 14px;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 30px;
+      padding: 40px 0 100px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(4, 6, 14, 0.88);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .footer-links a {
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: #FFC83D;
+    }
+
+    /* Floating Mobile Bottom Navigation Bar */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 120;
+      background: rgba(10, 15, 30, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: 22px;
+      padding: 6px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.78);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .mob-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 4px;
+      border-radius: 16px;
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      gap: 2px;
+    }
+    .mob-tab span.ico {
+      font-size: 17px;
+      line-height: 1;
+    }
+    .mob-tab.active, .mob-tab:active {
+      background: rgba(255, 200, 61, 0.16);
+      color: #FFC83D;
+    }
+
+    /* Fullscreen Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(4, 7, 15, 0.92);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 86vh;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFF;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Responsive Mobile Overrides */
+    @media (max-width: 1024px) {
+      .portfolio-strip-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .flagship-top,
+      .catalog-grid,
+      .dna-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 20px 0 24px;
+      }
+      .flagship-card {
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 14px;
+      }
+      .navbar-inner {
+        height: 60px;
+      }
+      .brand-logo {
+        width: 50px;
+        height: 38px;
+      }
+      .brand-name {
+        font-size: 16px;
+      }
+      .brand-sub {
+        display: none;
+      }
+      .store-pill-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+      .studio-identity-banner {
+        padding: 5px 12px 5px 6px;
+        margin-bottom: 12px;
+      }
+      .studio-identity-banner span {
+        font-size: 10.5px;
+      }
+      .hero-title {
+        font-size: 30px;
+      }
+      .hero-desc {
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+      .hero-cta-row {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .btn-primary-gold, .btn-glass {
+        width: 100%;
+        padding: 13px 18px;
+        font-size: 15px;
+      }
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .stat-box {
+        padding: 10px 12px;
+      }
+      .stat-val {
+        font-size: 18px;
+      }
+      .dual-stage {
+        padding: 18px 10px 12px;
+        gap: 10px;
+        border-radius: 22px;
+      }
+      .mini-phone-card {
+        padding: 8px;
+        border-radius: 16px;
+      }
+      .mini-phone-top img {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+      }
+      .mini-phone-name {
+        font-size: 12.5px;
+      }
+      .mini-phone-tag {
+        font-size: 8.5px;
+        padding: 1px 5px;
+      }
+      .mini-phone-cta {
+        font-size: 11px;
+        padding: 5px 8px;
+      }
+      .portfolio-strip-wrap {
+        padding: 14px 12px;
+        margin-top: 20px;
+      }
+      .portfolio-strip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .dock-game-item {
+        padding: 8px;
+        gap: 8px;
+      }
+      .dock-game-item img {
+        width: 38px;
+        height: 38px;
+      }
+      .dock-game-name {
+        font-size: 12px;
+      }
+      .flagship-identity {
+        gap: 12px;
+      }
+      .flagship-icon {
+        width: 68px;
+        height: 68px;
+        border-radius: 18px;
+      }
+      .flagship-name {
+        font-size: 21px;
+      }
+      .flagship-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-google-play, .btn-secondary {
+        justify-content: center;
+        width: 100%;
+      }
+      .shot-item {
+        width: 142px;
+      }
+      .mobile-bottom-nav {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Sticky Top Navigation -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#top" class="brand">
+        <img src="assets/logo_studio.webp" alt="Namy Game Studio Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">NAMY STUDIO</span>
+          <span class="brand-sub">Official Game Studio</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#top" class="nav-link">✨ Overview</a>
+        <a href="#thief-master" class="nav-link">🕵️ Thief Master</a>
+        <a href="#choco-ants" class="nav-link">🐜 Choco Ants 3D</a>
+        <a href="#more-games" class="nav-link">🎮 All 6 Games</a>
+        <a href="#studio-dna" class="nav-link">🏆 About Studio</a>
+        <a href="/privacy-policy" class="nav-link">🛡️ Privacy Policy</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://play.google.com/store/apps/dev?id=8013396071468803800" target="_blank" rel="noopener" class="store-pill-btn">
+          <span>▶</span>
+          <span>Google Play Store</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       HERO SECTION: STUDIO OVERVIEW + DUAL FLAGSHIP STAGE
+       ===================================================== -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left: Studio Overview & Identity -->
+        <div>
+          <div class="studio-identity-banner">
+            <img src="assets/logo_studio.webp" alt="Namy Game Studio" />
+            <span>NAMY GAME STUDIO • MOBILE ENTERTAINMENT</span>
+          </div>
+
+          <h1 class="hero-title">
+            Crafting Joyful <br />
+            <span class="gradient-gold">Puzzle</span> &amp; <span class="gradient-emerald">3D Voxel</span><br />
+            Mobile Games
+          </h1>
+
+          <p class="hero-desc">
+            We are an independent mobile game studio dedicated to creating clever brain teasers, satisfying 3D voxel worlds, and hilarious casual adventures — led by our flagship hits <strong>Thief Master</strong> and <strong>Choco Ants 3D</strong>.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#thief-master" class="btn-primary-gold">
+              <span>🔥</span>
+              <span>Explore Our Flagship Games</span>
+            </a>
+            <a href="https://play.google.com/store/apps/dev?id=8013396071468803800" target="_blank" rel="noopener" class="btn-glass">
+              <span>▶</span>
+              <span>Official Google Play Page ↗</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-box">
+              <div class="stat-val">6+</div>
+              <div class="stat-lbl">Live Store Games</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val">500K+</div>
+              <div class="stat-lbl">Global Players</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val">4.8 ★</div>
+              <div class="stat-lbl">Top Game Rating</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val">100%</div>
+              <div class="stat-lbl">Offline Ready</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Dual Flagship Phones (Both Thief Master & Choco Ants 3D Visible Immediately!) -->
+        <div class="dual-stage">
+          <div class="stage-badge-center">⭐ OUR 2 FLAGSHIP BLOCKBUSTERS</div>
+
+          <!-- Phone 1: Thief Master -->
+          <a href="#thief-master" class="mini-phone-card mini-phone-thief">
+            <div class="mini-phone-top">
+              <img src="assets/games/thief/icon.webp" alt="Thief Master Icon" />
+              <div>
+                <span class="mini-phone-tag tag-blue">#1 BRAIN PUZZLE</span>
+                <div class="mini-phone-name">Thief Master</div>
+              </div>
+            </div>
+            <div class="mini-phone-screen">
+              <img id="dualShotThief" src="assets/games/thief/shot_1.webp" alt="Thief Master Gameplay" />
+            </div>
+            <div class="mini-phone-cta">
+              <span>★ 4.8</span>
+              <span class="play-pill">Explore ↓</span>
+            </div>
+          </a>
+
+          <!-- Phone 2: Choco Ants 3D -->
+          <a href="#choco-ants" class="mini-phone-card mini-phone-choco">
+            <div class="mini-phone-top">
+              <img src="assets/games/choco/icon.webp" alt="Choco Ants 3D Icon" />
+              <div>
+                <span class="mini-phone-tag tag-gold">NEW 3D VOXEL</span>
+                <div class="mini-phone-name">Choco Ants 3D</div>
+              </div>
+            </div>
+            <div class="mini-phone-screen">
+              <img id="dualShotChoco" src="assets/games/choco/shot_1.webp" alt="Choco Ants 3D Gameplay" />
+            </div>
+            <div class="mini-phone-cta">
+              <span>★ 4.9</span>
+              <span class="play-pill">Explore ↓</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ALL 6 STUDIO GAMES AT A GLANCE (Instant Portfolio Dock) -->
+      <div class="portfolio-strip-wrap">
+        <div class="portfolio-strip-header">
+          <div class="portfolio-strip-title">
+            <span>🎮</span>
+            <span>COMPLETE STUDIO LINEUP — ALL 6 GAMES ON GOOGLE PLAY</span>
+          </div>
+        </div>
+        <div class="portfolio-strip-grid">
+          <a href="#thief-master" class="dock-game-item featured-dock">
+            <img src="assets/games/thief/icon.webp" alt="Thief Master" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Thief Master</div>
+              <div class="dock-game-sub">★ 4.8 • #1 Hit</div>
+            </div>
+          </a>
+          <a href="#choco-ants" class="dock-game-item featured-dock">
+            <img src="assets/games/choco/icon.webp" alt="Choco Ants 3D" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Choco Ants 3D</div>
+              <div class="dock-game-sub">★ 4.9 • 3D Voxel</div>
+            </div>
+          </a>
+          <a href="#more-games" class="dock-game-item">
+            <img src="assets/games/mrlong/icon.webp" alt="Mr Long Grab" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Mr Long Grab</div>
+              <div class="dock-game-sub">★ 4.7 • Stretch</div>
+            </div>
+          </a>
+          <a href="#more-games" class="dock-game-item">
+            <img src="assets/games/stamp/icon.webp" alt="Stamp Master Solitaire" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Stamp Master</div>
+              <div class="dock-game-sub">★ 4.7 • Solitaire</div>
+            </div>
+          </a>
+          <a href="#more-games" class="dock-game-item">
+            <img src="assets/games/cameraman/icon.webp" alt="Cameraman Puzzle" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Cameraman</div>
+              <div class="dock-game-sub">★ 4.6 • Action</div>
+            </div>
+          </a>
+          <a href="#more-games" class="dock-game-item">
+            <img src="assets/games/desertboy/icon.webp" alt="Ted Adventure" />
+            <div class="dock-game-meta">
+              <div class="dock-game-name">Ted Adventure</div>
+              <div class="dock-game-sub">★ 4.7 • Platform</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FLAGSHIP #1: THIEF MASTER (THIEF PUZZLE: BRAIN TEST)
+       ===================================================== -->
+  <section class="section" id="thief-master">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">🔥 FLAGSHIP SPOTLIGHT #1</div>
+          <h2 class="section-title">Our Signature Brain &amp; Voxel Hits</h2>
+        </div>
+      </div>
+
+      <div class="flagship-card flagship-thief">
+        <div class="flagship-top">
+          <div>
+            <div class="flagship-identity">
+              <img src="assets/games/thief/icon.webp" alt="Thief Master - Thief Puzzle: Brain Test" class="flagship-icon" />
+              <div>
+                <span class="flagship-rank-pill rank-1">🏆 FLAGSHIP #1 • BRAIN PUZZLE</span>
+                <h2 class="flagship-name">Thief Master — Thief Puzzle: Brain Test</h2>
+                <div class="flagship-meta-row">
+                  <span class="meta-badge">★★★★★ 4.8</span>
+                  <span class="meta-badge">Brain Test &amp; Logic</span>
+                  <span class="meta-badge">Offline Ready</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="flagship-desc">
+              Stretch your elastic arm around tricky obstacles, outsmart security guards, and pull off the funniest heists ever! Over 200+ brain-teasing logic puzzles designed for pure offline fun.
+            </p>
+
+            <div class="feature-pills">
+              <span class="feature-pill">🖐️ Elastic Stretch Mechanics</span>
+              <span class="feature-pill">🧠 200+ Hilarious Brain Teasers</span>
+              <span class="feature-pill">⚡ Tricky Traps &amp; Funny Pranks</span>
+              <span class="feature-pill">✈️ Play Offline Anytime</span>
+            </div>
+
+            <div class="flagship-cta-row">
+              <a href="https://play.google.com/store/apps/details?id=thief.master.brain.puzzle" target="_blank" rel="noopener" class="btn-google-play">
+                <span>▶</span>
+                <span>Get Thief Master on Google Play</span>
+              </a>
+              <button type="button" onclick="playThiefTrailer()" class="btn-secondary">
+                ▶ Watch Official Gameplay Trailer
+              </button>
+            </div>
+          </div>
+
+          <!-- Official Feature Banner + Click-to-Play Trailer Video -->
+          <div class="flagship-media-box" id="thiefVideoBox" onclick="playThiefTrailer()" style="cursor: pointer;">
+            <img src="assets/games/thief/feature_graphic.webp" alt="Thief Master Feature Banner" />
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,19,0.12),rgba(6,9,19,0.52));display:flex;align-items:center;justify-content:center;">
+              <div style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#FFC83D,#FF7A00);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(255,168,0,0.65);border:2.5px solid #FFF;font-size:26px;color:#1A0E00;padding-left:4px;">▶</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 Screenshots Carousel -->
+        <div id="thief-shots">
+          <div class="carousel-header">
+            <span class="carousel-label">📸 8 OFFICIAL STORE SCREENSHOTS (TAP TO ZOOM)</span>
+            <div class="carousel-controls">
+              <button class="carousel-arrow" onclick="scrollTrack('trackThief', -360)" aria-label="Scroll Left">‹</button>
+              <button class="carousel-arrow" onclick="scrollTrack('trackThief', 360)" aria-label="Scroll Right">›</button>
+            </div>
+          </div>
+          <div class="screenshots-track" id="trackThief">
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_1.webp')"><img src="assets/games/thief/shot_1.webp" alt="Thief Master Screenshot 1" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_2.webp')"><img src="assets/games/thief/shot_2.webp" alt="Thief Master Screenshot 2" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_3.webp')"><img src="assets/games/thief/shot_3.webp" alt="Thief Master Screenshot 3" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_4.webp')"><img src="assets/games/thief/shot_4.webp" alt="Thief Master Screenshot 4" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_5.webp')"><img src="assets/games/thief/shot_5.webp" alt="Thief Master Screenshot 5" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_6.webp')"><img src="assets/games/thief/shot_6.webp" alt="Thief Master Screenshot 6" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_7.webp')"><img src="assets/games/thief/shot_7.webp" alt="Thief Master Screenshot 7" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/thief/shot_8.webp')"><img src="assets/games/thief/shot_8.webp" alt="Thief Master Screenshot 8" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           FLAGSHIP #2: CHOCO ANTS 3D
+           ===================================================== -->
+      <div class="flagship-card flagship-choco" id="choco-ants">
+        <div class="flagship-top">
+          <div>
+            <div class="flagship-identity">
+              <img src="assets/games/choco/icon.webp" alt="Choco Ants 3D: Voxel Puzzle" class="flagship-icon" />
+              <div>
+                <span class="flagship-rank-pill rank-2">✨ FLAGSHIP #2 • 3D VOXEL PUZZLE</span>
+                <h2 class="flagship-name">Choco Ants 3D: Voxel Puzzle</h2>
+                <div class="flagship-meta-row">
+                  <span class="meta-badge">★★★★★ 4.9</span>
+                  <span class="meta-badge">3D Voxel &amp; ASMR Puzzle</span>
+                  <span class="meta-badge">100+ 3D Models</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="flagship-desc">
+              Guide adorable golden ants to crack open glossy chocolate shells and collect colorful 3D voxel blocks! Unlock 100+ gorgeous 3D models including Red High Heels, Pink Luxury Handbags, French Perfume &amp; Cute Corgis!
+            </p>
+
+            <div class="feature-pills">
+              <span class="feature-pill">👠 100+ Collectible 3D Voxel Models</span>
+              <span class="feature-pill">🔨 Giant Hammer &amp; Tornado Boosters</span>
+              <span class="feature-pill">🍫 Satisfying ASMR Chocolate Smash</span>
+              <span class="feature-pill">🧺 Cozy Sunlit Picnic Vibes</span>
+            </div>
+
+            <div class="flagship-cta-row">
+              <a href="https://play.google.com/store/apps/details?id=namy.choco.ants" target="_blank" rel="noopener" class="btn-google-play">
+                <span>▶</span>
+                <span>Get Choco Ants 3D on Google Play</span>
+              </a>
+              <button type="button" onclick="openLightbox('assets/games/choco/feature_graphic.webp')" class="btn-secondary">
+                🖼️ View 3D Collection Banner
+              </button>
+            </div>
+          </div>
+
+          <!-- Official Feature Graphic (Option 3) -->
+          <div class="flagship-media-box" onclick="openLightbox('assets/games/choco/feature_graphic.webp')" style="cursor: zoom-in;">
+            <img src="assets/games/choco/feature_graphic.webp" alt="Choco Ants 3D Official Feature Graphic" />
+          </div>
+        </div>
+
+        <!-- 8 Screenshots Carousel -->
+        <div id="choco-shots">
+          <div class="carousel-header">
+            <span class="carousel-label">📸 8 OFFICIAL 3D COLLECTION SCREENSHOTS (TAP TO ZOOM)</span>
+            <div class="carousel-controls">
+              <button class="carousel-arrow" onclick="scrollTrack('trackChoco', -360)" aria-label="Scroll Left">‹</button>
+              <button class="carousel-arrow" onclick="scrollTrack('trackChoco', 360)" aria-label="Scroll Right">›</button>
+            </div>
+          </div>
+          <div class="screenshots-track" id="trackChoco">
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_1.webp')"><img src="assets/games/choco/shot_1.webp" alt="Choco Ants 3D - High Heels (#9)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_2.webp')"><img src="assets/games/choco/shot_2.webp" alt="Choco Ants 3D - Pink Handbag (#11)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_3.webp')"><img src="assets/games/choco/shot_3.webp" alt="Choco Ants 3D - French Perfume (#13)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_4.webp')"><img src="assets/games/choco/shot_4.webp" alt="Choco Ants 3D - Giant Hammer (#2)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_5.webp')"><img src="assets/games/choco/shot_5.webp" alt="Choco Ants 3D - Smart Shuffle (#6)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_6.webp')"><img src="assets/games/choco/shot_6.webp" alt="Choco Ants 3D - Strawberry Cake (#8)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_7.webp')"><img src="assets/games/choco/shot_7.webp" alt="Choco Ants 3D - Tornado Vortex (#3)" loading="lazy" /></div>
+            <div class="shot-item" onclick="openLightbox('assets/games/choco/shot_8.webp')"><img src="assets/games/choco/shot_8.webp" alt="Choco Ants 3D - Cute Corgi (#5)" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       MORE GAMES ON GOOGLE PLAY (Full Portfolio Grid)
+       ===================================================== -->
+  <section class="section" id="more-games" style="padding-top: 8px;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">🎮 COMPLETE GOOGLE PLAY CATALOG</div>
+          <h2 class="section-title">More Hit Games by Namy Studio</h2>
+        </div>
+        <a href="https://play.google.com/store/apps/dev?id=8013396071468803800" target="_blank" rel="noopener" class="btn-secondary">
+          <span>View All on Google Play ↗</span>
+        </a>
+      </div>
+
+      <div class="catalog-grid">
+        <!-- Game 3: Mr Long Grab -->
+        <article class="game-card">
+          <div class="game-card-top">
+            <img src="assets/games/mrlong/icon.webp" alt="Mr Long Grab: Stretch Puzzle" class="game-card-icon" loading="lazy" />
+            <div class="game-card-info">
+              <div class="game-card-genre">PUZZLE • STRETCH ACTION</div>
+              <h3 class="game-card-title">Mr Long Grab: Stretch Puzzle</h3>
+              <p class="game-card-desc">
+                Stretch Mr Long's elastic arms across wild obstacle courses, rescue targets, and solve hilarious physics puzzles!
+              </p>
+            </div>
+          </div>
+          <div class="mini-shots">
+            <div class="mini-shot" onclick="openLightbox('assets/games/mrlong/shot_1.webp')"><img src="assets/games/mrlong/shot_1.webp" alt="Mr Long Grab 1" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/mrlong/shot_2.webp')"><img src="assets/games/mrlong/shot_2.webp" alt="Mr Long Grab 2" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/mrlong/shot_3.webp')"><img src="assets/games/mrlong/shot_3.webp" alt="Mr Long Grab 3" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/mrlong/shot_4.webp')"><img src="assets/games/mrlong/shot_4.webp" alt="Mr Long Grab 4" loading="lazy" /></div>
+          </div>
+          <div class="game-card-footer">
+            <span class="rating-pill">★★★★★ 4.7 • Free</span>
+            <a href="https://play.google.com/store/apps/details?id=com.namy.mrlonggrab" target="_blank" rel="noopener" class="card-play-btn">
+              <span>Google Play</span> <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Game 4: Stamp Master Solitaire -->
+        <article class="game-card">
+          <div class="game-card-top">
+            <img src="assets/games/stamp/icon.webp" alt="Stamp Master Solitaire" class="game-card-icon" loading="lazy" />
+            <div class="game-card-info">
+              <div class="game-card-genre">CARD • COLLECTION PUZZLE</div>
+              <h3 class="game-card-title">Stamp Master Solitaire</h3>
+              <p class="game-card-desc">
+                A relaxing fusion of classic Solitaire card strategy and vibrant stamp collecting across hundreds of handcrafted boards.
+              </p>
+            </div>
+          </div>
+          <div class="mini-shots">
+            <div class="mini-shot" onclick="openLightbox('assets/games/stamp/shot_1.webp')"><img src="assets/games/stamp/shot_1.webp" alt="Stamp Master 1" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/stamp/shot_2.webp')"><img src="assets/games/stamp/shot_2.webp" alt="Stamp Master 2" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/stamp/shot_3.webp')"><img src="assets/games/stamp/shot_3.webp" alt="Stamp Master 3" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/stamp/shot_4.webp')"><img src="assets/games/stamp/shot_4.webp" alt="Stamp Master 4" loading="lazy" /></div>
+          </div>
+          <div class="game-card-footer">
+            <span class="rating-pill">★★★★★ 4.7 • Free</span>
+            <a href="https://play.google.com/store/apps/details?id=namy.stamp.master.solitaire" target="_blank" rel="noopener" class="card-play-btn">
+              <span>Google Play</span> <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Game 5: Cameraman Puzzle -->
+        <article class="game-card">
+          <div class="game-card-top">
+            <img src="assets/games/cameraman/icon.webp" alt="Cameraman Puzzle" class="game-card-icon" loading="lazy" />
+            <div class="game-card-info">
+              <div class="game-card-genre">ACTION • BRAIN PUZZLE</div>
+              <h3 class="game-card-title">Cameraman Puzzle</h3>
+              <p class="game-card-desc">
+                Step into the shoes of Agent Cameraman and clear action-packed puzzle stages using ricochet shots and clever gadgets!
+              </p>
+            </div>
+          </div>
+          <div class="mini-shots">
+            <div class="mini-shot" onclick="openLightbox('assets/games/cameraman/shot_1.webp')"><img src="assets/games/cameraman/shot_1.webp" alt="Cameraman Puzzle 1" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/cameraman/shot_2.webp')"><img src="assets/games/cameraman/shot_2.webp" alt="Cameraman Puzzle 2" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/cameraman/shot_3.webp')"><img src="assets/games/cameraman/shot_3.webp" alt="Cameraman Puzzle 3" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/cameraman/shot_4.webp')"><img src="assets/games/cameraman/shot_4.webp" alt="Cameraman Puzzle 4" loading="lazy" /></div>
+          </div>
+          <div class="game-card-footer">
+            <span class="rating-pill">★★★★★ 4.6 • Free</span>
+            <a href="https://play.google.com/store/apps/details?id=com.cameraman.io" target="_blank" rel="noopener" class="card-play-btn">
+              <span>Google Play</span> <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Game 6: Ted Adventure of Desert Boy -->
+        <article class="game-card">
+          <div class="game-card-top">
+            <img src="assets/games/desertboy/icon.webp" alt="Ted Adventure of Desert Boy" class="game-card-icon" loading="lazy" />
+            <div class="game-card-info">
+              <div class="game-card-genre">ADVENTURE • PLATFORMER</div>
+              <h3 class="game-card-title">Ted Adventure of Desert Boy</h3>
+              <p class="game-card-desc">
+                Dash, jump, and battle across mysterious desert ruins with Ted in a classic side-scrolling platformer adventure.
+              </p>
+            </div>
+          </div>
+          <div class="mini-shots">
+            <div class="mini-shot" onclick="openLightbox('assets/games/desertboy/shot_1.webp')"><img src="assets/games/desertboy/shot_1.webp" alt="Ted Adventure 1" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/desertboy/shot_2.webp')"><img src="assets/games/desertboy/shot_2.webp" alt="Ted Adventure 2" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/desertboy/shot_3.webp')"><img src="assets/games/desertboy/shot_3.webp" alt="Ted Adventure 3" loading="lazy" /></div>
+            <div class="mini-shot" onclick="openLightbox('assets/games/desertboy/shot_4.webp')"><img src="assets/games/desertboy/shot_4.webp" alt="Ted Adventure 4" loading="lazy" /></div>
+          </div>
+          <div class="game-card-footer">
+            <span class="rating-pill">★★★★★ 4.7 • Free</span>
+            <a href="https://play.google.com/store/apps/details?id=ted.adventure.desertboy" target="_blank" rel="noopener" class="card-play-btn">
+              <span>Google Play</span> <span>↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       STUDIO DNA / ABOUT NAMY STUDIO (Top Studio Overview)
+       ===================================================== -->
+  <section class="section" id="studio-dna" style="padding-top: 10px;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">🏆 ABOUT NAMY STUDIO</div>
+          <h2 class="section-title">How We Craft Hit Mobile Games</h2>
+        </div>
+      </div>
+
+      <div class="dna-grid">
+        <div class="dna-card">
+          <div class="dna-icon">🧠</div>
+          <h3 class="dna-title">Instant Pick-Up &amp; Play</h3>
+          <p class="dna-desc">
+            Every title at Namy Studio is designed around an intuitive, one-finger core mechanic — whether stretching a thief's arm around traps or commanding a colony of golden ants.
+          </p>
+        </div>
+        <div class="dna-card">
+          <div class="dna-icon">✨</div>
+          <h3 class="dna-title">Satisfying 3D &amp; Visual Polish</h3>
+          <p class="dna-desc">
+            From expressive slapstick comedy in Thief Master to glossy chocolate-coated 3D voxel collectibles in Choco Ants 3D, we obsess over visual charm and ASMR feedback.
+          </p>
+        </div>
+        <div class="dna-card">
+          <div class="dna-icon">✈️</div>
+          <h3 class="dna-title">100% Free &amp; Offline Friendly</h3>
+          <p class="dna-desc">
+            Great entertainment should be accessible anywhere. All of our puzzle and adventure games run smoothly at 60 FPS on mobile devices with zero Wi-Fi required.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img src="assets/logo_studio.webp" alt="Namy Game Studio Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">NAMY STUDIO</span>
+          <span style="font-size: 13px; color: #94A3B8;">© 2026 Namy Studio. All rights reserved.</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://play.google.com/store/apps/dev?id=8013396071468803800" target="_blank" rel="noopener">Google Play Store</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/app-ads.txt">app-ads.txt</a>
+        <a href="mailto:hoangham01122@gmail.com">Contact: hoangham01122@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Sticky Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Quick Navigation">
+    <a href="#top" class="mob-tab active">
+      <span class="ico">✨</span>
+      <span>Overview</span>
+    </a>
+    <a href="#thief-master" class="mob-tab">
+      <span class="ico">🕵️</span>
+      <span>Thief Master</span>
+    </a>
+    <a href="#choco-ants" class="mob-tab">
+      <span class="ico">🐜</span>
+      <span>Choco Ants</span>
+    </a>
+    <a href="#more-games" class="mob-tab">
+      <span class="ico">🎮</span>
+      <span>All Games</span>
+    </a>
+  </nav>
+
+  <!-- Fullscreen Screenshot Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close Preview">✕</button>
+    <img id="lightboxImg" src="" alt="Preview" class="lightbox-img" />
+  </div>
+
+  <script>
+    // Gentle automatic slideshow on the Dual Flagship Stage (both games animate simultaneously!)
+    let dualIdx = 0;
+    setInterval(() => {
+      dualIdx = (dualIdx + 1) % 8;
+      const n = dualIdx + 1;
+      const tImg = document.getElementById("dualShotThief");
+      const cImg = document.getElementById("dualShotChoco");
+      if (tImg) tImg.src = "assets/games/thief/shot_" + n + ".webp";
+      if (cImg) cImg.src = "assets/games/choco/shot_" + n + ".webp";
+    }, 3200);
+
+    function scrollTrack(id, delta) {
+      const el = document.getElementById(id);
+      if (el) el.scrollBy({ left: delta, behavior: "smooth" });
+    }
+
+    function playThiefTrailer() {
+      const box = document.getElementById("thiefVideoBox");
+      if (!box) return;
+      box.onclick = null;
+      box.innerHTML = '<iframe src="https://www.youtube.com/embed/DKNLkaamj08?autoplay=1&rel=0" title="Thief Master Gameplay Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>';
+      box.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function openLightbox(src) {
+      document.getElementById("lightboxImg").src = src;
+      document.getElementById("lightbox").classList.add("open");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("open");
+    }
+  </script>
+</body>
+</html>
