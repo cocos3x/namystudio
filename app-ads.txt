@@ -1,5 +1,5 @@
 
-ownerdomain=ocean-soft.vercel.app
+ownerdomain=thief-eta.vercel.app
 
 #Admob
 google.com, pub-9922310198767478, DIRECT, f08c47fec0942fa0
